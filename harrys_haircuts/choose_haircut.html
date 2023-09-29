@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Haircut</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Harry's Fresh Cuts</h1>
+    </header>
+    <main>
+        <h2 style="text-align: center;">Choose Your Haircut</h2>
+
+        <div class="haircut-options">
+            <div class="haircut-choice">
+                <h3>Normal</h3>
+                <img src="normal_haircut.jpg" alt="Normal Haircut">
+                <button onclick="location.href='checkout.html?price=19.99'">Get This!</button>
+            </div>
+            
+            <div class="haircut-choice">
+                <h3>Cool</h3>
+                <img src="cool_haircut.jpg" alt="Cool Haircut" class="cool-haircut-image">
+                <button onclick="location.href='checkout.html?price=199.99'">Get This!</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <label for="other-options">Other:</label>
+            <select id="other-options">
+                <option value="crew-cut">$ Crew Cut</option>
+                <option value="undercut">$$ Undercut</option>
+                <option value="bob-cut">$ Bob Cut</option>
+                <option value="mohawk">$$$ Mohawk</option>
+                <option value="fade 1">$$$ Fade 1</option>
+                <option value="fade 2">$ Fade 2</option>
+                <option value="fade 3">$$ Fade 3</option>
+                <option value="fade 4">$$$ Fade 4</option>
+                <option value="fade 5">$ Fade 5</option>
+                <option value="fade 6">$$ Fade 6</option>
+                <option value="fade 7">$$$ Fade 7</option>
+                <option value="fade 8">$$$$ Fade 8</option>
+                <option value="taper 1">$ Taper 1</option>
+                <option value="taper 2">$$ Taper 2</option>
+                <option value="taper 3">$$$ Taper 3</option>
+                <option value="taper 4">$$$$ Taper 4</option>
+            </select>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Harry's Fresh Cuts</p>
+    </footer>
+
+    <style>
+        .haircut-options {
+            display: flex;
+            justify-content: space-between; 
+            margin: 2rem 0;
+        }
+
+        .haircut-choice {
+            width: 45%; 
+            text-align: center;
+        }
+
+        .haircut-choice img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            margin: 1rem 0;
+        }
+
+        .haircut-choice:nth-child(2) {
+            margin-left: 100px;
+        }
+    </style>
+
+    <script>
+        const select = document.getElementById('other-options');
+        select.addEventListener('change', function() {
+            let price;
+            switch (this.value) {
+                case 'crew-cut':
+                case 'bob-cut':
+                case 'fade 2':
+                case 'fade 5':
+                    price = '5';
+                    break;
+                case 'undercut':
+                case 'fade 3':
+                case 'fade 6':
+                case 'taper 2':
+                    price = '10';
+                    break;
+                case 'mohawk':
+                case 'fade 1':
+                case 'fade 4':
+                case 'fade 7':
+                case 'taper 3':
+                    price = '80';
+                    break;
+                case 'fade 8':
+                case 'taper 4':
+                    price = '400';
+                    break;
+            }
+            location.href = `checkout.html?price=${price}`;
+        });
+    </script>
+</body>
+</html>

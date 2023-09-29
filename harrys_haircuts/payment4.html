@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry's Fresh Cuts - Payment (4/4)</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Harry's Fresh Cuts</h1>
+    </header>
+
+    <main>
+        <h2>Payment Information</h2>
+        <form action="confirmation.html" method="GET">
+            <p>Enter the final four digits of your credit card number:
+                <input type="text" name="group4" pattern="\d{4}" maxlength="4" required placeholder="XXXX">
+            </p>
+            <button type="submit">Complete Payment</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Harry's Fresh Cuts</p>
+    </footer>
+
+    <style>
+        #errorMsg {
+            display: none;
+            color: gray;
+            font-size: 0.9rem; 
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        header {
+            background-color: #FF0000;
+            color: #00FF00;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        header {
+            background-color: #FF0000;
+            color: #00FF00;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+    </style>
+</body>
+</html>

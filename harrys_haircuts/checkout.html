@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry's Fresh Cuts</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+    <style>
+        #errorMsg {
+            display: none;
+            color: gray; 
+            font-size: 0.9rem; 
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif; 
+            background-color: #f4f4f4;
+            color: #333; 
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        main {
+            flex: 1;
+            width: 80%; 
+            text-align: center; 
+        }
+
+        header {
+            background-color: #FF0000;
+            color: #00FF00;
+            padding: 1rem 2rem;
+            width: 100%;
+        }
+
+        footer {
+            text-align: center; 
+            padding: 1rem 0;
+            width: 100%;
+            background-color: #333;
+            color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Harry's Fresh Cuts</h1>
+    </header>
+    <main>
+        <h2>Your Selection</h2>
+        <p>You have selected a haircut for: <strong>$<span id="priceDisplay"></span></strong></p>
+
+        <h2>Select an available time for your appointment:</h2>
+        <!-- Efficient time input -->
+        <form onsubmit="return validateTime()">
+            <p>Enter your desired appointment time:
+                <input type="text" id="timeInput">
+            </p>
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2023 Harry's Fresh Cuts</p>
+        <p id="errorMsg">Incorrect format: please format using DD-MM-YYYY + Morning/Afternoon, for example, 01-01-2023 + Morning</p>
+    </footer>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const price = params.get('price');
+        document.getElementById('priceDisplay').textContent = price;
+
+        function validateTime() {
+            const timeInput = document.getElementById('timeInput').value;
+            const pattern = /^\d{2}-\d{2}-\d{4} \+ (Morning|Afternoon)$/;
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (!pattern.test(timeInput)) {
+                errorMsg.style.display = 'block';
+                return false; // Prevent form submission
+            } else {
+                errorMsg.style.display = 'none';
+                window.location.href = 'payment.html';
+                return false; // Prevent default form submission since we're using JS for redirection
+            }
+        }
+    </script>
+</body>
+
+</html>
